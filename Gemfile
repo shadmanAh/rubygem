@@ -37,3 +37,6 @@ gem "haml-rails", "~> 2.0"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.15.1'
+gem 'simple_form'
+gem 'faker'
+gem 'devise'

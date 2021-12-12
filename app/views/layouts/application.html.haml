@@ -11,4 +11,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' 
 
   %body
-    = yield
+    = render 'layouts/header'
+    = render 'layouts/messages'
+    .container
+      = yield
