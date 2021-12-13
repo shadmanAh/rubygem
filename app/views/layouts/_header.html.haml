@@ -30,13 +30,13 @@
         -#       %button.btn.btn-primary.btn-xm{:type => "submit"} 
         -#         %span.fa.fa-search{"aria-hidden" => "true"}
 
-        -# .form-inline.my-2.my-lg-0
-        -#   = form_tag(courses_path, method: :get) do
-        -#     .input-group 
-        -#       = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control'
-        -#       %span.input-group-append
-        -#         %button.btn.btn-primary.btn-xm{:type => "submit"}
-        -#           %span.fa.fa-search{"aria-hidden" => "true"}
+        .form-inline.my-2.my-lg-0
+          = form_tag(courses_path, method: :get) do
+            .input-group 
+              = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control', style: 'float: left; width: 150px; height: 25px;'
+              %span.input-group-append
+                %button.btn.btn-primary.btn-xm{:type => "submit"}
+                  %span.fa.fa-search{"aria-hidden" => "true"}
         %ul.navbar-nav
           -# %li.nav-item{class: "#{'active font-weight-bold' if current_page?(home_activity_path)}"}
           -#   = link_to home_activity_path, class: 'nav-link' do
