@@ -1,8 +1,8 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   .container-fluid
     %a.navbar-brand{:href => "/"} Rubygems
-    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
-      %span.navbar-toggler-icon
+    -# %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+    -#   %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       - if current_user
         %ul.navbar-nav.me-auto.mb-2.mb-lg-0
@@ -12,36 +12,36 @@
               Home
           %li.nav-item{class: "#{'active font-weight-bold' if current_page?(courses_path)}"}
             = link_to courses_path, class: 'nav-link' do
-              %i.fa.fa-book
+              %i.fa.fa-graduation-cap
               Courses
           %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_course_path)}"}
             = link_to new_course_path, class: 'nav-link' do
               %i.fa.fa-plus
               New Course
-          -# %li.nav-item{class: "#{'active font-weight-bold' if current_page?(users_path)}"}
-          -#   = link_to users_path, class: 'nav-link' do
-          -#     %i.fa.fa-users
-          -#     Usres
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(users_path)}"}
+            = link_to users_path, class: 'nav-link' do
+              %i.fa.fa-users
+              Usres
         
-        -# = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
-        -#   .input-group 
-        -#     = f.search_field :title_or_short_description_cont, class: 'form-control', style: 'float: left; width: 150px;', placeholder: "Find a course"
-        -#     %span.input-group-append
-        -#       %button.btn.btn-primary.btn-xm{:type => "submit"} 
-        -#         %span.fa.fa-search{"aria-hidden" => "true"}
+        = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+          .input-group 
+            = f.search_field :title_or_short_description_cont, class: 'form-control', style: 'float: left; width: 150px; height: 25px;', placeholder: "Find a course"
+            %span.input-group-append
+              %button.btn.btn-primary.btn-xm{:type => "submit"} 
+                %span.fa.fa-search{"aria-hidden" => "true"}
 
-        .form-inline.my-2.my-lg-0
-          = form_tag(courses_path, method: :get) do
-            .input-group 
-              = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control', style: 'float: left; width: 150px; height: 25px;'
-              %span.input-group-append
-                %button.btn.btn-primary.btn-xm{:type => "submit"}
-                  %span.fa.fa-search{"aria-hidden" => "true"}
+        -# .form-inline.my-2.my-lg-0
+        -#   = form_tag(courses_path, method: :get) do
+        -#     .input-group 
+        -#       = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control', style: 'float: left; width: 150px; height: 25px;'
+        -#       %span.input-group-append
+        -#         %button.btn.btn-primary.btn-xm{:type => "submit"}
+        -#           %span.fa.fa-search{"aria-hidden" => "true"}
         %ul.navbar-nav
-          -# %li.nav-item{class: "#{'active font-weight-bold' if current_page?(home_activity_path)}"}
-          -#   = link_to home_activity_path, class: 'nav-link' do
-          -#     %i.fa.fa-bell
-          -#     Activity
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(home_activity_path)}"}
+            = link_to home_activity_path, class: 'nav-link' do
+              %i.fa.fa-bell
+              Activity
           %li.nav-item.dropdown
             %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
               %b= current_user.email

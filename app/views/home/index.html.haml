@@ -4,13 +4,22 @@
 
   .p-4
 
-  .form-inline.my-2.my-lg-0
-    = form_tag(courses_path, method: :get) do
+  - if current_user
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
       .input-group 
-        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control', style: 'float: left; width: 150px; height: 25px;'
+        = f.search_field :title_or_short_description_cont, class: 'form-control', style: 'float: left; flex: none; width: 150px; height: 25px;', placeholder: "Find a course"
         %span.input-group-append
-          %button.btn.btn-primary.btn-xm{:type => "submit"}
+          %button.btn.btn-primary.btn-xm{:type => "submit"} 
             %span.fa.fa-search{"aria-hidden" => "true"}
+
+
+  -# .form-inline.my-2.my-lg-0
+  -#   = form_tag(courses_path, method: :get) do
+  -#     .input-group 
+  -#       = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control', style: 'float: left; width: 150px; height: 25px;'
+  -#       %span.input-group-append
+  -#         %button.btn.btn-primary.btn-xm{:type => "submit"}
+  -#           %span.fa.fa-search{"aria-hidden" => "true"}
 
 
 .card-group 
@@ -50,20 +59,17 @@
   Popular courses 
 .card-columns 
   - @courses.each do |course|
-    %br
     = render 'courses/course', course: course
 %hr
 %h2
   Top rated courses 
 .card-columns 
   - @courses.each do |course|
-    %br
     = render 'courses/course', course: course
 %hr
 %h2
   Latest courses 
 .card-columns 
   - @latest_courses.each do |course|
-    %br
     = render 'courses/course', course: course
 %hr
