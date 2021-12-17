@@ -1,11 +1,19 @@
 = link_to "Courses", courses_path
 \/
 = link_to @course.title, course_path(@course)
-%br
+%p
+
+-# .row 
+-#     .col-lg-6 
+-#         = render 'courses/course', course: @course
+-#     .col-lg-6
+-#         - @lessons.each do |lesson|
+-#             = render 'lessons/lesson', lesson: lesson 
+
 
 = render 'courses/course', course: @course
-
-
-
-
-  
+%h3 
+    = link_to 'Add lesson', new_lesson_path(course_id: @course.id)
+.col-lg-6
+    - @lessons.each do |lesson|
+        = render 'lessons/lesson', lesson: lesson 

@@ -14,6 +14,7 @@
       = f.label :description
       = f.search_field :short_description_cont, placeholder: "Description", class: 'form-control form-control-sm'
       -# = f.search_field :language_cont, placeholder: "Language", class: 'form-control form-control-sm'
+      %p
       = f.label :language
       = f.select :language_cont, Course.languages, include_blank: true
       -# = f.search_field :level_cont, placeholder: "Level", class: 'form-control form-control-sm'

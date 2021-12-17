@@ -16,6 +16,11 @@ class User < ApplicationRecord
 
   has_many :courses
 
+
+  extend FriendlyId
+  friendly_id :email, use: :slugged
+
+
   after_create :assign_default_role
 
   def assign_default_role
@@ -30,6 +35,11 @@ class User < ApplicationRecord
   end
 
   validate :must_have_a_role, on: :update 
+
+
+  def online?
+    updated_at > 2.minutes.ago
+  end
 
   private 
   def must_have_a_role 
