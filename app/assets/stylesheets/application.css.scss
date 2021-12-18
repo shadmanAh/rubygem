@@ -33,5 +33,13 @@
     background-color: #18d3ff;
 }
 
+.btn-primary, .btn-danger{
+    color: #fff !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
 .form-control.is-invalid{background-image: none !important;}
 .form-control.is-valid{background-image: none !important;}

@@ -1,7 +1,20 @@
-%h1 Editing lesson
+= link_to "Courses", courses_path
+\/
+= link_to @lesson.course.title, course_path(@lesson.course)
+\/
+= link_to @lesson.title, course_lesson_path(@course, @lesson)
+\/ edit
+%p
 
-= render 'form'
+.card 
+    .card-header 
+        %h1 
+            .far.fa-check-square
+            Editing lesson
+    .card-body
+        = render 'form'
+    .card-footer
 
-= link_to 'Show lesson', course_lesson_path(@course, @lesson)
-\|
-= link_to 'Back to course', course_path(@lesson.course)
+        = link_to 'Show lesson', course_lesson_path(@course, @lesson)
+        \|
+        = link_to 'Back to course', course_path(@lesson.course)

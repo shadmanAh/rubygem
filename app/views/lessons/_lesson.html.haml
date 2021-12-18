@@ -5,7 +5,6 @@
     - if policy(lesson).show?
         .card-body 
             = lesson.content
-            = lesson.course
     - if policy(lesson).edit?
         .card-footer 
             -# = link_to 'show', lesson, class: 'btn btn-sm btn-primary'

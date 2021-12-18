@@ -4,20 +4,18 @@
         .badge.badge-info 
             = @users.count
 %p
-.card-columns 
-    - @users.each do |user|
-        = render 'users/user', user: user
+-# .card-columns 
+-#     - @users.each do |user|
+-#         = render 'users/user', user: user
 
 
 
 .form-inline
     = search_form_for @q do |f|
         = f.search_field :email_or_sign_in_count_eq, placeholder: "email or sign in count"
-        = f.submit 
-    .ml-2
-    %br
-    = link_to users_path, class: 'btn btn-sm btn-secondary' do 
-        .fa.fa-sync
+        = f.submit
+        = link_to users_path, class: 'btn btn-sm btn-primary' do 
+            .fa.fa-sync
         
 
 %table.table.table-bordered
@@ -31,6 +29,8 @@
             %th= 'last_sign_in_at'.humanize
             %th= 'current_sign_in_ip'.humanize
             %th= 'last_sign_in_ip'.humanize 
+            %th Confirmed?
+            %th Roles
     %tbody
         - @users.each do |user|
             %tr 
@@ -42,3 +42,9 @@
                 %td= user.last_sign_in_at
                 %td= user.current_sign_in_ip
                 %td= user.last_sign_in_ip 
+                %td= user.confirmed?
+                %td 
+                    - user.roles.each do |role|
+                        .badge.badge-info
+                            = role.name
+                    = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning' if policy(user).edit?

@@ -1,9 +1,12 @@
 .card 
     .card-header 
-        %h1 Edit course
+        %h1 
+            .fa.fa-graduation-cap
+            Edit course
     .card-body
         = render 'form'
+    .card-footer
 
-= link_to 'Show', @course
-\|
-= link_to 'Back', courses_path
+        = link_to 'Show', @course
+        \|
+        = link_to 'Back', courses_path

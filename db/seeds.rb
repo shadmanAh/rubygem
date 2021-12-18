@@ -1,4 +1,11 @@
 #User.create!(email: 'shad@gmail.com', password: '123456', password_confirmation: '123456')
+user = User.new(
+    email: 'shad@gmail.com',
+    password: '123456',
+    password_confirmation: '123456'
+)
+user.skip_confirmation!
+user.save!
 
 30.times do
     Course.create!([{
