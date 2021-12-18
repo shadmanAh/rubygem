@@ -13,7 +13,7 @@
 
 = render 'courses/course', course: @course
 %h3 
-    = link_to 'Add lesson', new_course_lesson_path(@course, @lesson)
+    = link_to 'Add lesson', new_course_lesson_path(@course, @lesson), class: 'btn btn-lg btn-primary'
 .col-lg-6
     - @lessons.each do |lesson|
         = render 'lessons/lesson', lesson: lesson 
