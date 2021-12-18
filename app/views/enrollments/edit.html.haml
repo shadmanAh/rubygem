@@ -2,17 +2,16 @@
     Corsego 
     \|
     Editing
-    = @course.title
+    = @enrollment
 
 .card 
     .card-header 
         %h1 
-            .fa.fa-graduation-cap
-            Edit course
+            .fa.fa-lock-open
+            Editing enrollment
     .card-body
         = render 'form'
     .card-footer
-
-        = link_to 'Show', @course
+        = link_to 'Show', @enrollment
         \|
-        = link_to 'Back', courses_path
+        = link_to 'Back', enrollments_path

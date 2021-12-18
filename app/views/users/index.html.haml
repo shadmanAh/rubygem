@@ -1,3 +1,8 @@
+- content_for :title do 
+    Corsego 
+    \|
+    All users
+
 %h3
     .text-center
         Users 
@@ -16,35 +21,41 @@
         = f.submit
         = link_to users_path, class: 'btn btn-sm btn-primary' do 
             .fa.fa-sync
-        
-
-%table.table.table-bordered
-    %thead 
-        %tr 
-            %th id
-            %th= sort_link(@q, :email) 
-            %th created_at
-            %th= 'sign_in_count'.humanize 
-            %th= 'current_sign_in_at'.humanize
-            %th= 'last_sign_in_at'.humanize
-            %th= 'current_sign_in_ip'.humanize
-            %th= 'last_sign_in_ip'.humanize 
-            %th Confirmed?
-            %th Roles
-    %tbody
-        - @users.each do |user|
+%br     
+.table-responsive
+    %table.table.table-bordered.table-striped.table-sm
+        %thead 
             %tr 
-                %td= user.id
-                %td= user.email 
-                %td= user.created_at
-                %td= user.sign_in_count
-                %td= user.current_sign_in_at
-                %td= user.last_sign_in_at
-                %td= user.current_sign_in_ip
-                %td= user.last_sign_in_ip 
-                %td= user.confirmed?
-                %td 
-                    - user.roles.each do |role|
-                        .badge.badge-info
-                            = role.name
-                    = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning' if policy(user).edit?
+                %th id
+                %th= sort_link(@q, :email) 
+                %th created_at
+                %th= 'sign_in_count'.humanize 
+                %th= 'current_sign_in_at'.humanize
+                %th= 'last_sign_in_at'.humanize
+                %th= 'current_sign_in_ip'.humanize
+                %th= 'last_sign_in_ip'.humanize 
+                %th Confirmed?
+                %th Roles
+        %tbody
+            - @users.each do |user|
+                %tr 
+                    %td= user.id
+                    %td
+                        - if user.online?
+                            .text-success.fa.fa-circle
+                        - else
+                            .text-danger.fa.fa-circle
+                    
+                        = link_to user.email, user_path(user) 
+                    %td= user.created_at
+                    %td= user.sign_in_count
+                    %td= user.current_sign_in_at
+                    %td= user.last_sign_in_at
+                    %td= user.current_sign_in_ip
+                    %td= user.last_sign_in_ip 
+                    %td= user.confirmed?
+                    %td 
+                        - user.roles.each do |role|
+                            .badge.badge-info
+                                = role.name
+                        = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning' if policy(user).edit?
